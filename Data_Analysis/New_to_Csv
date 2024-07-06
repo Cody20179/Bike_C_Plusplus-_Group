@@ -3,6 +3,20 @@ import numpy as np
 import pandas as pd
 import os
 
+folder_path = 'D:/BikeMap'
+
+folders = os.listdir(folder_path)
+
+json_files = []
+
+for folder in folders:
+    folder_path_json = os.path.join(folder_path, folder)
+    if os.path.isdir(folder_path_json):
+        files = os.listdir(folder_path_json)
+        for file in files:
+            if file.lower().endswith('.json'):
+                json_files.append(f"{folder}/{file}")
+                
 def write_to_file(File_name):
     input_filename = f"D:/BikeMap/{File_name}"
     output_filename = f"CSV/CSV_All/{File_name.replace('/', '-').replace('.json', '')}.csv"
